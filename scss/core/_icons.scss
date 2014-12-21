@@ -1,0 +1,24 @@
+%small{
+  width:28px;
+  height:28px;
+  background-image: url("../../images/sprites.png");
+  display:inline-block;
+}
+
+.icn{
+
+  @include e(facebook){
+    @extend %small;
+    background-position: 0 0;
+  }
+
+  @include e(youtube){
+    @extend %small;
+    background-position: -101px 0;
+  }
+
+  @include e(twitter){
+    @extend %small;
+    background-position: -50px 0;
+  }
+}

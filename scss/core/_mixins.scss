@@ -1,0 +1,82 @@
+// ==========================================================================
+// Mixins
+// ==========================================================================
+
+@mixin round($round: 5px) {
+  border-radius: $round;
+  -moz-border-radius: $round;
+  -webkit-border-radius: $round;
+  background-clip: padding-box;
+}
+
+// Bem selectors
+// this adds __ to our specified class using the smacss guidelines
+@mixin e($element) {
+  &-#{$element} {
+    @content;
+  }
+}
+
+//modifier
+//add-- when you make a new file
+@mixin m($modifier) {
+  &--#{$modifier} {
+    @content;
+  }
+}
+
+@mixin img-replace($img, $h, $w, $disp: block) {
+  background-image: url('#{$path--rel}/#{$img}');
+  background-repeat: no-repeat;
+  width:$w;
+  height:$h;
+  display:$disp;
+  @content;
+}
+
+
+@mixin pull($direction: none){
+  @if $direction == "right" {
+    float: right !important;
+  }
+  @elseif $direction == "left" {
+    float: left !important;
+  }
+
+}
+
+@mixin letterpress($x: 0, $y: 0, $blur: 1px, $color: #000){
+  text-shadow:$x, $y, $blur, $color;
+}
+
+//media quries
+@mixin mq($screen-size) {
+  @if $screen-size == "xx-small" {
+    @media (min-width: 1px) and (max-width: $x-small) {
+      @content;
+    }
+  }
+  @else if $screen-size == "x-small" {
+    @media (min-width: 1px) and (max-width: $small) {
+      @content;
+    }
+  }
+  @else if $screen-size == "small" {
+    @media (min-width: $small + 1) {
+      @content;
+    }
+  }
+  @else if $screen-size == "medium" {
+    @media (min-width: $medium + 1) {
+      @content;
+    }
+  }
+  @else if $screen-size == "large" {
+    @media (min-width: $large){
+      @content;
+    }
+  }
+  @else {
+    @error "Wrong break-point value for '#{$screen-size}'";
+  }
+}

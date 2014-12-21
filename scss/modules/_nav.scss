@@ -1,0 +1,43 @@
+.navbar-default{
+  border: none;
+  background-color:#e7e7e7;
+}
+
+.navbar-default .navbar-nav{
+
+  li {
+    &:hover{
+      background-color: $gray-light;
+
+    }
+
+    a{
+
+      &:hover{
+        color:#ffffff;
+      }
+    }
+  } //end li
+
+  .active{
+    a{
+      background-color: $gray-light;
+      color:#ffffff;
+    }
+  }
+}
+
+.navbar-toggle{
+  margin-left: 15px;
+  marign-right:0px;
+}
+
+//Socail links on right
+.social-nav{
+  @include hide-text();
+  display:block;
+  li{
+    float:left;
+    margin: 10px 0 0 22px;
+  }
+}
