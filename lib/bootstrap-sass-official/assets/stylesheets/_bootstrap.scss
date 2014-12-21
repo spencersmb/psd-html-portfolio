@@ -1,7 +1,7 @@
 // Core variables and mixins
 //Moved varaibles to scss folder
 //@import "bootstrap/variables";
-@import "bootstrap/mixins";
+//@import "bootstrap/mixins";
 
 // Reset and dependencies
 @import "bootstrap/normalize";
@@ -10,7 +10,7 @@
 
 // Core CSS
 @import "bootstrap/scaffolding";
-@import "bootstrap/type";
+//@import "bootstrap/type";
 @import "bootstrap/code";
 @import "bootstrap/grid";
 @import "bootstrap/tables";
