@@ -5,6 +5,13 @@
   display:inline-block;
 }
 
+%large{
+  width:64px;
+  height:64px;
+  background-image: url("../../images/feature-sprites.png");
+  display: inline-block;
+}
+
 .icn{
 
   @include e(facebook){
@@ -21,4 +28,8 @@
     @extend %small;
     background-position: -50px 0;
   }
+}
+
+.icn-feature{
+  margin-top:105px;
 }

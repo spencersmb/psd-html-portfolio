@@ -1,0 +1,37 @@
+.portfolio{
+  background-color: #dadada;
+
+  h1{
+    font-size: em(42px);
+    color:$secondary-color;
+    text-transform: uppercase;
+    text-align: center;
+    margin: em(12px) 0;
+  }
+}
+
+.caption{
+  float:left;
+}
+
+%porfolio-images{
+  height:210px;
+  width:210px;
+  background-color: #000000;
+
+}
+
+.port{
+  @include e(laptop){
+    @extend %portfolio-images;
+  }
+  @include e(acme){
+    @extend %portfolio-images;
+  }
+  @include e(demo){
+    @extend %portfolio-images;
+  }
+  @include e(logo){
+    @extend %portfolio-images;
+  }
+}

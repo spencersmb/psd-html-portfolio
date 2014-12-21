@@ -1,8 +1,52 @@
 .header {
+  margin-top: em(42px);
   text-align: center;
 }
 
 .main-feature{
-  margin: 0 auto;
+  margin: em(42px) auto;
   text-align: center;
+  background-color:#363636;
+}
+
+.feature{
+  margin:0 auto;
+  background: url("../../images/feature-bg.jpg") no-repeat;
+  background-position: center;
+  background-size: cover;
+  height:300px;
+}
+
+.feature-item{
+  border-left: 1px solid $white;
+  height:300px;
+  &:last-child{
+    border-right: 1px solid $white;
+  }
+  a{
+    text-decoration: none;
+  }
+
+}
+
+.feature-title{
+  color:#ffffff;
+  opacity:.7;
+  font-size:em(20px);
+}
+
+.design-services{
+  padding:em(42px) 0;
+  text-align: center;
+
+  h1{
+    font-size: em(42px);
+    color:$secondary-color;
+    text-transform: uppercase;
+    margin-bottom: em(12px);
+  }
+}
+
+.service-item{
+  padding:0 200px;
 }
