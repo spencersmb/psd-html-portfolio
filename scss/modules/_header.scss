@@ -7,6 +7,9 @@
   margin: em(42px) auto;
   text-align: center;
   background-color:#363636;
+  a{
+    text-decoration: none;
+  }
 }
 
 .feature{
@@ -14,18 +17,28 @@
   background: url("../../images/feature-bg.jpg") no-repeat;
   background-position: center;
   background-size: cover;
-  height:300px;
+  height:100%;
+
+  @include mq(medium){
+    height:300px;
+  }
+
 }
 
 .feature-item{
   border-left: 1px solid $white;
-  height:300px;
+  border-bottom: 1px solid $white;
+  height:250px;
+
+  @include mq(medium){
+    height: 300px;
+    border-bottom: 1px solid $white;
+  }
+
   &:last-child{
     border-right: 1px solid $white;
   }
-  a{
-    text-decoration: none;
-  }
+
 
 }
 
@@ -36,7 +49,7 @@
 }
 
 .design-services{
-  padding:em(42px) 0;
+  padding:em(10px) 0 em(42px) 0;
   text-align: center;
 
   h1{
@@ -48,5 +61,9 @@
 }
 
 .service-item{
-  padding:0 200px;
+  padding:0 50px;
+
+  @include mq(medium){
+    padding:0 200px;
+  }
 }

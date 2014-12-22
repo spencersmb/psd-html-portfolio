@@ -1,0 +1,89 @@
+footer{
+  background-color:#252525;
+  color: grey;
+  text-align: center;
+
+  @include mq(small){
+    text-align: left;
+  }
+  h3{
+    color:$secondary-color;
+    font-size: em(24px);
+    font-weight: bold;
+  }
+  & .row{
+    padding: 10px 0 30px 0 ;
+  }
+}
+
+.blog-title{
+  font-weight: bold;
+  padding:10px 0;
+}
+
+.blog-date{
+  font-weight: 200;
+  font-style: italic;
+}
+
+.contact-list{
+
+  li{
+    padding:10px 0;
+  }
+
+  a{
+    font-style: italic;
+    color: grey;
+  }
+}
+
+.form-contact{
+  padding:10px 0;
+
+  input[type="email"],
+  input[type="text"]{
+    height:40px;
+    width:100%;
+
+    display:block;
+
+    font-size:em(18px);
+    color:grey;
+
+    padding-left:10px;
+    margin:5px 0 25px 0;
+
+    background-color:#363636;
+    border:none;
+
+    @include mq(large){
+      width:300px;
+    }
+  }
+
+  input[type="submit"]{
+    height:40px;
+    width:100%;
+
+    background-color:$secondary-color;
+    color:#ffffff;
+    font-size:em(18px);
+    font-weight: 400;
+    border:none;
+    border-bottom:2px solid lighten($secondary-color, 13.5%);
+
+    @include mq(large){
+      width:300px;
+    }
+  }
+
+}
+
+.copyright{
+  background-color:#1d1d1d;
+  padding:20px 0;
+  text-align: center;
+  width:100%;
+  margin:0 auto;
+}

@@ -49,6 +49,11 @@
   text-shadow:$x, $y, $blur, $color;
 }
 
+$x-small: 1px;
+$small: 768px;
+$medium: 992px;
+$large: 1200px;
+
 //media quries
 @mixin mq($screen-size) {
   @if $screen-size == "xx-small" {
@@ -78,5 +83,27 @@
   }
   @else {
     @error "Wrong break-point value for '#{$screen-size}'";
+  }
+}
+
+
+//mixin from cody house
+@mixin center($xy:xy) {
+  @if $xy == xy {
+    left: 50%;
+    top: 50%;
+    bottom: auto;
+    right: auto;
+    @include transform(translateX(-50%) translateY(-50%));
+  }
+  @else if $xy == x {
+    left: 50%;
+    right: auto;
+    @include transform(translateX(-50%));
+  }
+  @else if $xy == y {
+    top: 50%;
+    bottom: auto;
+    @include transform(translateY(-50%));
   }
 }

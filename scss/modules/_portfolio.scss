@@ -8,30 +8,93 @@
     text-align: center;
     margin: em(12px) 0;
   }
+
+  @include e(list){
+    padding-bottom:50px;
+
+    & .col-md-3{
+      margin: 25px 0;
+      padding:0 25px;
+
+      @include mq(small){
+        padding: 0px 15px;
+      }
+
+    }
+
+  }
 }
 
 .caption{
   float:left;
+  width:70%;
+
+  @include e(item){
+    position: absolute;
+    background: rgba(0,0,0, 0.5);
+    width:100%;
+    bottom:0;
+    height:23%;
+    padding:10px;
+
+    @include mq(small){
+      height:30%;
+    }
+
+    @include mq(large){
+      height:25%;
+    }
+
+    a{
+      color:#ffffff;
+      text-decoration: none;
+      font-size:em(16px);
+
+    }
+  }
+  figcaption{
+    display:block;
+
+  }
 }
 
-%porfolio-images{
-  height:210px;
-  width:210px;
+%portfolio-images{
+
+  height:250px;
+  width:100%;
   background-color: #000000;
+  position:relative;
+
+  @include mq(small){
+    height:213px;
+  }
+
+
+  @include mq(large){
+    height:263px;
+  }
 
 }
 
 .port{
   @include e(laptop){
     @extend %portfolio-images;
+    background: url("../../images/portfolio-laptop.jpg")center center no-repeat;
   }
   @include e(acme){
     @extend %portfolio-images;
+    background: url("../../images/portfolio-acme.jpg") center center no-repeat;
+    @include mq(medium){
+      background: url("../../images/portfolio-acme.jpg") -200px -132px no-repeat;
+    }
   }
   @include e(demo){
     @extend %portfolio-images;
+    background: url("../../images/portfolio-tablet.jpg") center center no-repeat;
   }
   @include e(logo){
     @extend %portfolio-images;
+    background: url("../../images/portfolio-logo.jpg") center center no-repeat;
   }
 }
+

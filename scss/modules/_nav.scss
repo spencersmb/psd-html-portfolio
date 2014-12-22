@@ -6,8 +6,14 @@
 .navbar-default .navbar-nav{
 
   li {
+
     &:hover{
       background-color: $gray-light;
+    .active{
+      &:hover{
+        background-color: red;
+      }
+    }
 
     }
 
@@ -36,8 +42,235 @@
 .social-nav{
   @include hide-text();
   display:block;
+  margin-right: 15px;
   li{
     float:left;
     margin: 10px 0 0 22px;
+  }
+}
+
+
+//////////////////////////////////////
+//Cody House Nav
+/////////////////////////////////////
+
+/* --------------------------------
+
+Modules - reusable parts of our design
+
+-------------------------------- */
+
+.sb-img-replace { /* replace text with a background-image */
+  display: inline-block;
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+/* --------------------------------
+
+Main components
+
+-------------------------------- */
+
+.sb-main-content {
+  /* set a min-height and a z-index to be sure that the main element completely covers the lateral menu */
+  min-height: 100%;
+  position: relative;
+  background-color: #ffffff;
+  z-index: $content-zindex; //2
+
+  //we assign a top padding since the header is in position absolute or fixed
+  padding-top: $header-S;
+//
+//  /* Force Hardware Acceleration in WebKit */
+//  -webkit-transform: translateZ(0);
+//  -webkit-backface-visibility: hidden;
+//
+//  @include transition-property(transform);
+//  @include transition-duration(.4s);
+//
+//  &.lateral-menu-is-open {
+//    /* translate to show the lateral menu - all content needs to be put in the .cd-main-content to translate*/
+//    @include transform(translateX(-260px));
+//  }
+//
+  @include mq(medium) {
+    padding-top: $header-M;
+  }
+}
+
+
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: $header-S;
+  width: 100%;
+  background: $gray;
+  z-index: $header-zindex; //3
+
+  /* Force Hardware Acceleration in WebKit */
+//  -webkit-transform: translateZ(0);
+//  -webkit-backface-visibility: hidden;
+//
+//  @include transition-property(transform);
+//  @include transition-duration(.4s);
+//
+//  &.lateral-menu-is-open {
+//    /* translate to show the lateral menu */
+//    @include transform(translateX(-260px));
+//  }
+//
+//  //assign this class to the header if you want a fixed navigation
+  &.is-fixed {
+    position: fixed;
+  }
+
+  @include mq(medium) {
+    height: $header-M;
+  }
+}
+
+
+#sb-logo {
+  display: block;
+  float: left;
+  margin: 12px 0 0 20px;
+
+  img {
+    display: block;
+  }
+
+  @include mq(medium) {
+    margin: 22px 0 0 30px;
+  }
+}
+
+#sb-top-nav {
+  position: absolute;
+  top: 0;
+  right: 120px;
+  height: 100%;
+
+  display: none;
+
+  ul {
+    height: 100%;
+    padding-top: 18px;
+  }
+
+  li {
+    display: inline-block;
+    margin-right: 1em;
+  }
+
+  a {
+    display: inline-block;
+    padding: .5em;
+    color: #FFF;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-decoration: none;
+
+    &.current {
+      background-color: $secondary-color;
+    }
+
+    .no-touch &:hover {
+      color: rgba(#FFF, .7);
+    }
+  }
+
+  @include mq(medium) {
+    display:block;
+  }
+}
+
+
+#sb-menu-trigger {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 50px;
+  background-color: lighten($secondary-color, 10%);
+
+  .sb-menu-text {
+    height: 100%;
+
+    text-transform: uppercase;
+    color: #FFF;
+    font-weight: 600;
+
+    display: none;
+  }
+
+  .sb-menu-icon {
+    /* this span is the central line in the menu menu */
+    display: inline-block;
+    position: absolute;
+    @include center; // mixin inside partials > _mixings.scss
+    width: 18px;
+    height: 2px;
+    background-color: #FFF;
+
+    /* these are the upper and lower lines in the menu menu */
+    &::before, &:after {
+      content: '';
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background-color: inherit;
+      left: 0;
+    }
+
+    &::before {
+      bottom: 5px;
+    }
+
+    &::after {
+      top: 5px;
+    }
+  }
+
+//  &.is-clicked {
+//    .sb-menu-icon {
+//      background-color: rgba(#FFF, 0);
+//
+//      &::before, &::after {
+//        background-color: rgba(#FFF, 1);
+//      }
+//
+//      &::before {
+//        bottom: 0;
+//        @include transform(rotate(45deg));
+//      }
+//
+//      &::after {
+//        top: 0;
+//        @include transform(rotate(-45deg));
+//      }
+//    }
+//  }
+
+  @include mq(medium) {
+    width: 110px;
+    padding-left: 1.25em;
+
+    .sb-menu-text {
+      display: inline-block;
+      line-height: $header-M;
+    }
+
+    .sb-menu-icon {
+      left: auto;
+      right: 1.25em;
+      @include transform(translateX(0));
+    }
   }
 }

@@ -28,61 +28,36 @@
 </head>
 <body>
 
-    <header>
+    <header class="is-fixed">
+        <!--company logo-->
+        <a id="sb-logo" href="#0"><img src="images/cd-logo.svg" alt="Homepage"></a>
 
-        <nav class="navbar navbar-default" role="navigation">
-
-            <div class="container">
-                <div class="navbar-header">
-
-                    <!--mobile btn-->
-                    <button type="button" class="navbar-toggle collapsed pull-left" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <!--<a class="navbar-brand" href="#">Brand</a>-->
-
-                </div> <!-- end navbar header -->
-
-                <!--main nav-->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
-                        <li><a href="#">Work</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-
-                    <!--social icons-->
-                    <ul class="social-nav pull-right">
-                        <li><a href="" class="icn-youtube" alt="Youtube">YouTube</a></li>
-                        <li><a href="" class="icn-twitter" alt="Twitter">Twitter</a></li>
-                        <li><a href="" class="icn-facebook" alt="Facebook">Facebook</a></li>
-                    </ul>
-                </div>
-            </div> <!-- end container -->
-
+        <nav id="sb-top-nav">
+            <ul>
+                <li><a href="#0">Tour</a></li>
+                <li><a href="#0">Login</a></li>
+            </ul>
         </nav>
 
-
-        <div class="header">
-
-            <h1>
-                My Design Portfolio
-            </h1>
-            <h2>
-                Design Solutions for Your Business
-            </h2>
-        </div>
+        <!--mobile nav hamburger-->
+        <a id="sb-menu-trigger" href="#0"><span class="sb-menu-text">Menu</span><span class="sb-menu-icon"></span></a>
 
     </header>
 
 
 
-
+    <main class="sb-main-content">
     <!--MAIN FEATURE SECTION-->
+
+        <div class="header">
+
+        <h1>
+        My Design Portfolio
+        </h1>
+        <h2>
+        Design Solutions for Your Business
+        </h2>
+        </div>
 
     <section>
 
@@ -148,55 +123,68 @@
 
     <!--PORTFOLIO LIST-->
     <section>
-        <div class="portfolio">
+        <div class="portfolio clearfix">
             <div class="container">
                 <h1>portfolio</h1>
-                <div class="row portfolio-list clearfix">
+                <div class="row portfolio-list">
 
                     <div class="col-md-3">
                         <div class="port-laptop">
+                            <div class="caption-item">
                             <a href="" >
                                 <figure class="caption">
                                     <figcaption>Lorem ipsum dolor sit amet</figcaption>
                                 </figure>
+                            <img class="icn-portfolio img-responsive" src="images/36/web.png" alt=""/>
+
                             </a>
-                            <img class="icn-portfolio" src="images/36/web.png" alt=""/>
+
+                        </div>
                         </div>
 
                     </div>
 
                     <div class="col-md-3">
                         <div class="port-acme">
+                            <div class="caption-item">
                             <a href="" >
                                 <figure class="caption">
                                     <figcaption>Lorem ipsum dolor sit amet</figcaption>
                                 </figure>
+                            <img class="icn-portfolio img-responsive" src="images/36/design.png" alt=""/>
                             </a>
-                            <img class="icn-portfolio" src="images/36/design.png" alt=""/>
+                        </div>
                         </div>
 
                     </div>
 
                     <div class="col-md-3">
                         <div class="port-demo">
+
+                            <div class="caption-item">
                             <a href="" >
+                                <img class="icn-portfolio img-responsive" src="images/36/video.png" alt=""/>
                                 <figure class="caption">
                                     <figcaption>Lorem ipsum dolor sit amet</figcaption>
                                 </figure>
-                            </a>
-                            <img class="icn-portfolio" src="images/36/video.png" alt=""/>
-                        </div>
 
+
+                            </a>
+                                </div>
+                        </div>
                     </div>
+
 
                     <div class="col-md-3">
                         <div class="port-logo">
+                            <div class="caption-item">
                             <a href="" >
                                 <figure class="caption">
                                     <figcaption>Lorem ipsum dolor sit amet</figcaption>
                                 </figure>
+                            <img class="icn-portfolio img-responsive" src="images/36/design.png" alt=""/>
                             </a>
-                            <img class="icn-portfolio" src="images/36/design.png" alt=""/>
+                            </div>
                         </div>
 
                     </div>
@@ -215,45 +203,60 @@
     <!--FOOTER-->
     <section>
         <footer>
-            <div class="container">
+            <div class="container clearfix">
                 <div class="row">
 
-                    <div class="col-md-4">
+                    <div class="col-sm-4 col-md-4">
 
                         <h3>From the Blog</h3>
 
-                        <p>Lorem ipsum dolor sit
-                            on March 10, 2014</p>
+                        <ul class="blog-list">
+                            <li class="blog-title">Lorem ipsum dolor sit
+                                <div class="blog-date">on March 10, 2014</div>
+                            </li>
 
-                        <p>Lorem ipsum dolor sit
-                        on March 10, 2014</p>
+                            <li class="blog-title">Lorem ipsum dolor sit
+                                <div class="blog-date">on March 10, 2014</div>
+                            </li>
 
-                        <p>Lorem ipsum dolor sit
-                            on March 10, 2014</p>
+                            <li class="blog-title">Lorem ipsum dolor sit
+                                <div class="blog-date">on March 10, 2014</div>
+                            </li>
+
+                        </ul>
 
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-sm-4 col-md-4">
 
                         <h3>Contact Us</h3>
 
-                        <p>123 45th Street
-                            Podunk, TX 77777</p>
+                        <ul class="contact-list">
+                            <li class="contact-item">
+                                123 45th Street</br>
+                                Podunk, TX 77777
+                            </li>
 
-                        <p>(555)555-5555</p>
+                            <li class="contact-item">
+                                (555)555-5555
+                            </li>
 
-                        <p>info@email.com</p>
+                            <li class="contact-item">
+                                <a href="#">info@email.com</a>
+                            </li>
+
+                        </ul>
 
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-sm-4 col-md-4">
 
                         <h3>Register Here</h3>
 
                         <form action="/" method="post" class="form-contact">
-                            <input type="text" name="user-name" id="user-name" placeholder="Enter name"/>
-                            <input type="email" name="email" id="email placeholder="Enter email""/>
-                            <input type="submit" value="Subscribe" class="btn"/>
+                            <input type="text" name="user-name" id="user-name" placeholder="Name"/>
+                            <input type="email" name="email" id="email" placeholder="Email"/>
+                            <input type="submit" value="Subscribe" class=""/>
                         </form>
 
                     </div>
@@ -262,14 +265,104 @@
 
             </div> <!-- end container -->
 
-            <span class="copyright">&copy;copyright 2014, My portfolio Design</span>
+            <div class="copyright">&copy;copyright 2014, My portfolio Design</div>
 
         </footer>
+
     </section>
+
+    </main>
+
+    <!--mobile nav slide out-->
+    <nav class="sb-lateral-nav">
+        <ul class="sb-navigation">
+            <!--item with sub-items-->
+            <li class="item-has-children">
+                <a href="#">Services
+                    <!--sub-items list-->
+                <ul class="sub-menu">
+                    <li><a href="#0">Brand</a></li>
+                    <li><a href="#0">Web Apps</a></li>
+                    <li><a href="#0">Mobile Apps</a></li>
+                </ul>
+            </li>
+        </ul> <!-- end item with sub-menu -->
+
+        <!--single item element-->
+        <ul class="sb-navigation sb-single-item-wrapper">
+            <li><a href="#0">Info</a></li>
+            <!-- other simple items here -->
+        </ul>
+
+        <!--social items -->
+        <div class="sb-navigation socials">
+            <a class="sb-twitter sb-img-replace" href="#0">Twitter</a>
+            <a class="sb-github sb-img-replace" href="#0">Git Hub</a>
+            <a class="sb-facebook sb-img-replace" href="#0">Facebook</a>
+            <a class="sb-google sb-img-replace" href="#0">Google Plus</a>
+        </div>
+
+
+    </nav>
 <!-- JavaScript -->
 <!-- 	<script src="js/jquery.js"></script> -->
     <script src="lib/jquery/dist/jquery.min.js"></script>
+    <script src="js/modernizr.js"></script>
     <script src="lib/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
+    <script src="js/main.js"></script>
 
 </body>
 </html>
+
+<!--<nav class="navbar navbar-default" role="navigation">-->
+
+<!--<div class="container">-->
+<!--<div class="navbar-header">-->
+
+<!--<ul class="social-nav pull-right hidden-sm hidden-md hidden-lg ">-->
+<!--<li><a href="" class="icn-youtube" alt="Youtube">YouTube</a></li>-->
+<!--<li><a href="" class="icn-twitter" alt="Twitter">Twitter</a></li>-->
+<!--<li><a href="" class="icn-facebook" alt="Facebook">Facebook</a></li>-->
+<!--</ul>-->
+
+<!--&lt;!&ndash;mobile btn&ndash;&gt;-->
+<!--<button type="button" class="navbar-toggle collapsed pull-left" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">-->
+<!--<span class="sr-only">Toggle navigation</span>-->
+<!--<span class="icon-bar"></span>-->
+<!--<span class="icon-bar"></span>-->
+<!--<span class="icon-bar"></span>-->
+<!--</button>-->
+<!--&lt;!&ndash;<a class="navbar-brand" href="#">Brand</a>&ndash;&gt;-->
+
+<!--</div> &lt;!&ndash; end navbar header &ndash;&gt;-->
+
+<!--&lt;!&ndash;main nav&ndash;&gt;-->
+<!--<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">-->
+<!--<ul class="nav navbar-nav">-->
+<!--<li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>-->
+<!--<li><a href="#">Work</a></li>-->
+<!--<li><a href="#">About</a></li>-->
+<!--<li><a href="#">Contact</a></li>-->
+<!--</ul>-->
+
+<!--&lt;!&ndash;social icons&ndash;&gt;-->
+<!--<ul class="social-nav pull-right hidden-xs">-->
+<!--<li><a href="" class="icn-youtube" alt="Youtube">YouTube</a></li>-->
+<!--<li><a href="" class="icn-twitter" alt="Twitter">Twitter</a></li>-->
+<!--<li><a href="" class="icn-facebook" alt="Facebook">Facebook</a></li>-->
+<!--</ul>-->
+<!--</div>-->
+<!--</div> &lt;!&ndash; end container &ndash;&gt;-->
+
+<!--</nav>-->
+
+
+<!--<div class="header">-->
+
+<!--<h1>-->
+<!--My Design Portfolio-->
+<!--</h1>-->
+<!--<h2>-->
+<!--Design Solutions for Your Business-->
+<!--</h2>-->
+<!--</div>-->
