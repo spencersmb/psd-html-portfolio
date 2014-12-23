@@ -60,6 +60,7 @@ Modules - reusable parts of our design
 
 -------------------------------- */
 
+//alternate way to do social media icons
 .sb-img-replace { /* replace text with a background-image */
   display: inline-block;
   overflow: hidden;
@@ -86,19 +87,20 @@ Main components
 
   //we assign a top padding since the header is in position absolute or fixed
   padding-top: $header-S;
-//
-//  /* Force Hardware Acceleration in WebKit */
-//  -webkit-transform: translateZ(0);
-//  -webkit-backface-visibility: hidden;
-//
-//  @include transition-property(transform);
-//  @include transition-duration(.4s);
-//
-//  &.lateral-menu-is-open {
-//    /* translate to show the lateral menu - all content needs to be put in the .cd-main-content to translate*/
-//    @include transform(translateX(-260px));
-//  }
-//
+
+  /* Force Hardware Acceleration in WebKit */
+  -webkit-transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+
+  //add transform to speed up and smooth out transition
+  @include transition-property(transform);
+  @include transition-duration(.4s);
+
+  &.lateral-menu-is-open {
+    /* translate to show the lateral menu - all content needs to be put in the .cd-main-content to translate*/
+    @include transform(translateX(-260px));
+  }
+
   @include mq(medium) {
     padding-top: $header-M;
   }
@@ -115,18 +117,19 @@ header {
   z-index: $header-zindex; //3
 
   /* Force Hardware Acceleration in WebKit */
-//  -webkit-transform: translateZ(0);
-//  -webkit-backface-visibility: hidden;
-//
-//  @include transition-property(transform);
-//  @include transition-duration(.4s);
-//
-//  &.lateral-menu-is-open {
-//    /* translate to show the lateral menu */
-//    @include transform(translateX(-260px));
-//  }
-//
-//  //assign this class to the header if you want a fixed navigation
+  -webkit-transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+
+  //smooth transition for the HEADER
+  @include transition-property(transform);
+  @include transition-duration(.4s);
+
+  &.lateral-menu-is-open {
+    /* translate to show the lateral menu */
+    @include transform(translateX(-260px));
+  }
+
+  //assign this class to the header if you want a fixed navigation
   &.is-fixed {
     position: fixed;
   }
@@ -198,7 +201,7 @@ header {
   top: 0;
   height: 100%;
   width: 50px;
-  background-color: lighten($secondary-color, 10%);
+  background-color: lighten($gray, 10%);
 
   .sb-menu-text {
     height: 100%;
@@ -238,25 +241,28 @@ header {
     }
   }
 
-//  &.is-clicked {
-//    .sb-menu-icon {
-//      background-color: rgba(#FFF, 0);
-//
-//      &::before, &::after {
-//        background-color: rgba(#FFF, 1);
-//      }
-//
-//      &::before {
-//        bottom: 0;
-//        @include transform(rotate(45deg));
-//      }
-//
-//      &::after {
-//        top: 0;
-//        @include transform(rotate(-45deg));
-//      }
-//    }
-//  }
+  //turns hamburger into X
+  &.is-clicked {
+    .sb-menu-icon {
+      //hide middle line
+      background-color: rgba(#FFF, 0);
+
+      //add color to the two and leave the middle one invisible
+      &::before, &::after {
+        background-color: rgba(#FFF, 1);
+      }
+
+      &::before {
+        bottom: 0;
+        @include transform(rotate(45deg));
+      }
+
+      &::after {
+        top: 0;
+        @include transform(rotate(-45deg));
+      }
+    }
+  }
 
   @include mq(medium) {
     width: 110px;
@@ -270,7 +276,170 @@ header {
     .sb-menu-icon {
       left: auto;
       right: 1.25em;
+
+      //adds space next to icon for some reason
+      //used to help visally center the icon next to MENU
+      //could also just edit the right em - not sure why
       @include transform(translateX(0));
+    }
+  }
+}
+
+#sb-lateral-nav {
+  position: fixed;
+  height: 100%;
+  right: 0;
+  top: 0;
+  visibility: hidden;
+
+  /* the secondary navigation is covered by the main element */
+  z-index: $secondary-nav; // see partials > _variables.scss
+
+  width: 260px;
+  background-color: $secondary-color;
+
+  overflow-y: auto;
+
+  /* Force Hardware Acceleration in WebKit */
+  -webkit-transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+
+  //add smoothing transition to translate
+  -webkit-transition: -webkit-transform .4s 0s, visibility 0s .4s;
+  -moz-transition: -moz-transform .4s 0s, visibility 0s .4s;
+  transition: transform .4s 0s, visibility 0s .4s;
+
+
+  /* this creates the subtle slide in animation of the navigation */
+  @include transform(translateX(80px));
+
+  .sb-navigation {
+    margin: 10px 0 16px;
+  }
+
+  .sub-menu {
+    padding: 0 10px 20px 15px;
+    display: none;
+  }
+
+  a {
+    display: block;
+    line-height: 2em;
+    padding: 0 16px 0 32px;
+    color: $gray-darker;
+    text-decoration: none;
+
+    &.current {
+      background-color: lighten($secondary-color, 10%);
+      color: #FFF;
+    }
+
+    .no-touch &:hover {
+      color: #FFF;
+    }
+  }
+
+  @include mq(medium) {
+    .sb-navigation {
+      margin: 20px 0;
+    }
+  }
+
+  &.lateral-menu-is-open {
+
+    //translate 0 because the menu is already in place
+    //use transition to slide it in and appear with no delay/fade
+    @include transform(translateX(0));
+    visibility: visible;
+    -webkit-transition: -webkit-transform .4s 0s, visibility 0s 0s;
+    -moz-transition: -moz-transform .4s 0s, visibility 0s 0s;
+    transition: transform .4s 0s, visibility 0s 0s;
+
+    /* smooth the scrolling on touch devices - webkit browsers */
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* style menu items which have a submenu  */
+#sb-lateral-nav .item-has-children > a {
+  position: relative;
+  text-transform: uppercase;
+  font-weight: 600;
+
+  /* this is the right arrow to show that the item has a submenu  */
+  &::after {
+    content: '';
+    display: block;
+    height: 11px;
+    width: 8px;
+    position: absolute;
+    @include center(y);
+    right: 1em;
+    background: url('../../images/cd-arrow.svg') no-repeat center center;
+    background-size: 8px 11px;
+
+    //adds transition movement for the icon
+    @include transition-property(transform);
+    @include transition-duration(.2s);
+  }
+
+  //changes the icon direction
+  &.submenu-open::after {
+    @include transform(translateY(-50%) rotate(90deg));
+
+  }
+}
+
+#sb-lateral-nav .socials {
+  @include clearfix;
+  padding: 0 32px;
+
+  a {
+    height: 32px;
+    width: 32px;
+    float: left;
+    padding: 0;
+    background-image: url('../../images/cd-socials.svg');
+    background-repeat: no-repeat;
+    background-size: 128px 64px;
+    background-color: #FFF;
+    margin-right: .5em;
+    @include border-radius;
+
+    &.sb-twitter {
+      background-position: 0 0;
+    }
+
+    &.sb-github {
+      background-position: -32px 0;
+    }
+
+    &.sb-facebook {
+      background-position: -64px 0;
+    }
+
+    &.sb-google {
+      background-position: -96px 0;
+    }
+
+    .no-touch &:hover {
+      background-color: #000000;
+
+      &.sb-twitter {
+        background-position: 0 -32px;
+      }
+
+      &.sb-github {
+        background-position: -32px -32px;
+      }
+
+      &.sb-facebook {
+        background-position: -64px -32px;
+      }
+
+      &.sb-google {
+        background-position: -96px -32px;
+      }
     }
   }
 }

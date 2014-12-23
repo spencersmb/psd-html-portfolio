@@ -1,0 +1,56 @@
+.faq-header{
+
+  background-color: lighten($secondary-color, 10%);
+
+  h1{
+    margin: 0 0;
+    padding: 90px 0;
+    font-weight: 100;
+    color:#ffffff;
+    text-align: center;
+    font-size:em(40px);
+  }
+
+}
+
+.sb-faq{
+  width:90%;
+  max-width: $screen-md; // breakpoints inside variables
+  margin: 2em auto;
+  box-shadow: 0 1px 5px rgba(#000, .1);
+  @include clearfix;
+
+  @include mq(medium) {
+    position: relative;
+    margin: 4em auto;
+    box-shadow: none;
+  }
+}
+
+.sb-faq-categories{
+  a{
+    position:relative;
+    display: block;
+    overflow:hidden;
+    height:50px;
+    background-color:$primary-color;
+    line-height: 50px; //centers the word vertically
+    padding: 0 28px 0 16px;
+    @include font-smoothing;
+    color:#ffffff;
+    white-space: nowrap;
+    border-bottom: 1px solid lighten($primary-color, 3%);
+
+    &::before, &::after {
+      /* plus icon on the right */
+      position: absolute;
+//      top: 50%;
+//      right: 16px;
+      display: inline-block;
+      height: 1px;
+      width: 10px;
+      background-color: #ffffff;
+    }
+
+  }
+}

@@ -9,6 +9,10 @@
   background-clip: padding-box;
 }
 
+@mixin border-radius($radius:.25em) {
+  border-radius: $radius;
+}
+
 // Bem selectors
 // this adds __ to our specified class using the smacss guidelines
 @mixin e($element) {
@@ -106,4 +110,9 @@ $large: 1200px;
     bottom: auto;
     @include transform(translateY(-50%));
   }
+}
+
+@mixin font-smoothing {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
