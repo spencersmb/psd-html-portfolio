@@ -168,12 +168,14 @@ header {
   }
 
   li {
-    display: inline-block;
+    display: block;
     margin-right: 1em;
+    float:left;
+    padding-top:.5em;
   }
 
   a {
-    display: inline-block;
+//    display: inline-block;
     padding: .5em;
     color: #FFF;
     text-transform: uppercase;

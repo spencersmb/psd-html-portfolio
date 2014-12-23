@@ -11,6 +11,11 @@
 * {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+
+}
+
+*::after, *::before {
+  content: '';
 }
 
 //html, body, div, span, applet, object, iframe,
