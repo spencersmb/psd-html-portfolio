@@ -1,0 +1,424 @@
+.faq-header {
+
+  background-color: lighten($secondary-color, 10%);
+
+  h1 {
+    margin: 0 0;
+    padding: 90px 0;
+    font-weight: 100;
+    color: #ffffff;
+    text-align: center;
+    font-size: em(40px);
+  }
+
+}
+
+
+.sb-faq{
+
+  position:relative;
+  width:90%;
+  max-width: $screen-md; // breakpoints inside variables
+  margin: 2em auto;
+  box-shadow: 0 1px 5px rgba(#000, .1);
+  @include clearfix;
+
+  @include mq(medium) {
+    position: relative;
+    margin: 4em auto;
+    box-shadow: none;
+  }
+}
+
+.sb-faq-categories{
+
+  a{
+    position:relative;
+    display: block;
+    overflow:hidden;
+    height:50px;
+    background-color:$primary-color;
+    line-height: 50px; //centers the word vertically
+    padding: 0 28px 0 16px;
+    @include font-smoothing;
+    color:#ffffff;
+    white-space: nowrap;
+    border-bottom: 1px solid lighten($primary-color, 3%);
+
+    //must add content to before and after *
+    &::before, &::after {
+      /* plus icon on the right */
+      position: absolute;
+      top: 50%;
+      right: 16px;
+      display: inline-block;
+      height: 1px;
+      width: 10px;
+      background-color: lighten($primary-color, 20%);
+    }
+    //add the vertical line
+    &::after {
+      @include transform(rotate(90deg));
+    }
+
+    li:last-child a {
+      border-bottom: none;
+    }
+
+  }
+  @include mq(small) {
+    box-shadow: 0 1px 2px rgba(#000, .08);
+
+    a {
+      font-size: em(14px);
+      font-weight: 600;
+      padding: 0 24px;
+      //nice fade when hovering
+      @include transition(background .2s, padding .2s);
+
+      &::before, &::after {
+        display: none;
+      }
+
+      .no-touch &:hover {
+        background: lighten($primary-color, 3%);
+        text-decoration: none;
+      }
+      &:focus{
+        text-decoration: none;
+      }
+    }
+
+    .no-js & {
+      width: 100%;
+      margin-bottom: 2em;
+    }
+
+  }
+
+
+
+  @include mq(medium) {
+    float: left;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    z-index: 2;
+
+    a::before {
+      /* decorative rectangle on the left visible for the selected item */
+      display: block;
+      top: 0;
+      right: auto;
+      left: 0;
+      height: 100%;
+      width: 3px;
+      background-color: $secondary-color;
+      opacity: 0;
+      @include transition(opacity .2s);
+      z-index: 2;
+    }
+
+    .selected {
+      background: darken($primary-color, 5%) !important;
+
+      //adds redline opacity
+      &::before {
+        opacity: 1;
+      }
+    }
+
+    &.is-fixed {
+      /* top and left value assigned in jQuery */
+      position: fixed;
+      //      position: absolute;
+      //      bottom: 0;
+
+    }
+
+    .no-js & {
+      position: relative;
+    }
+
+  }
+
+}
+
+//build the slider panel for mobile
+.sb-faq-items{
+  position: fixed;
+  height: 100%;
+  width: 90%;
+  top: 50px;
+  right: -300px;
+  background:#ffffff;
+  padding: 0 5% 1em;
+  overflow: auto;
+  z-index: 3;
+
+  -webkit-overflow-scrolling: touch;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+
+  @include transform(translateZ(0) translateX(100%));
+  -webkit-transition: -webkit-transform .3s;
+  -moz-transition: -moz-transform .3s;
+  transition: transform .3s;
+
+  //mobile slide in faq-item
+  &.slide-in {
+    @include transform(translateZ(0) translateX(0%));
+    right: 0;
+  }
+
+
+  .no-js & {
+    position: static;
+    height: auto;
+    width: 100%;
+    @include transform(translateX(0));
+  }
+
+  @include mq(medium) {
+    position: static;
+    height: auto;
+    width: 100%;
+    float: none;
+    overflow: visible;
+    @include transform(translateZ(0) translateX(0));
+    padding: 0;
+    background: transparent;
+    padding-left: 220px;
+
+    .no-js & {
+      padding-left: 0;
+    }
+  }
+}
+
+
+.sb-close-panel {
+  position: fixed;
+  top: 5px;
+  right: -100%;
+  display: block;
+  height: 40px;
+  width: 40px;
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+  z-index: 4;
+  /* Force Hardware Acceleration in WebKit */
+  @include transform(translateZ(0));
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  @include transition(right .4s);
+
+  &::before, &::after {
+    /* close icon in CSS */
+    position: absolute;
+    top: 16px;
+    left: 12px;
+    display: inline-block;
+    height: 3px;
+    width: 18px;
+    background: $secondary-color;
+  }
+
+  &::before {
+    @include transform(rotate(45deg));
+  }
+
+  &::after {
+    @include transform(rotate(-45deg));
+  }
+
+  &.move-left {
+    right: 2%;
+  }
+
+  @include mq(medium) {
+    display: none;
+  }
+}
+
+
+.sb-faq-group{
+  /* hide group not selected */
+  display: none;
+
+  &.selected {
+    display: block;
+  }
+
+  .sb-faq-title {
+    background: transparent;
+    box-shadow: none;
+    margin: 1em 0;
+
+    .no-touch &:hover {
+      box-shadow: none;
+    }
+
+    h2 {
+      text-transform: uppercase;
+      font-size: em(12px);
+      font-weight: 700;
+      color: darken($primary-color, .5%);
+    }
+
+  }
+
+  .no-js & {
+    display: block;
+  }
+
+  @include mq(medium){
+    /* hide group not selected */
+    display: block;
+    margin:0;
+
+    h2{
+      margin:0;
+    }
+
+    > li {
+      background: #ffffff;
+      margin-bottom: 6px;
+      box-shadow: 0 1px 2px rgba(#000, .08);
+      @include transition(box-shadow .2s);
+
+      .no-touch &:hover {
+        box-shadow: 0 1px 10px rgba($primary-color, .3);
+
+      }
+    }
+
+    .sb-faq-title {
+      margin: 2em 0 1em;
+    }
+
+    &:first-child .sb-faq-title {
+      margin-top: 0;
+    }
+  }
+}
+
+.sb-faq-trigger {
+  position: relative;
+  display: block;
+  margin: 1.6em 0 .4em;
+  line-height: 1.2;
+  color:$secondary-color;
+  //text hover
+  &:hover{
+    color:$secondary-color;
+    text-decoration: none;
+  }
+
+  &:focus{
+    color:$secondary-color;
+    text-decoration: none;
+  }
+
+  @include mq(medium) {
+    font-size: em(24px);
+    font-weight: 300;
+    margin: 0;
+    padding: 24px 72px 24px 24px;
+
+    &::before, &::after {
+      /* arrow icon on the right */
+      position: absolute;
+      right: 24px;
+      top: 50%;
+      height: 2px;
+      width: 13px;
+      background: lighten($secondary-color, 20%);
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      @include transition-property(transform);
+      @include transition-duration(.2s);
+    }
+
+    &::before {
+      @include transform(rotate(45deg));
+      right: 32px;
+    }
+
+    &::after {
+      @include transform(rotate(-45deg));
+    }
+
+    .content-visible &::before {
+      @include transform(rotate(-45deg));
+    }
+
+    .content-visible &::after {
+      @include transform(rotate(45deg));
+    }
+  }
+
+  a{
+
+  }
+}
+
+.sb-faq-contact {
+  //hides p tag content
+  p {
+    font-size:14px;
+    line-height: 1.4;
+    color: lighten($primary-color, .5%);
+  }
+
+  @include mq(medium) {
+    display: none;
+    padding: 0 24px 30px;
+
+    p {
+      line-height: 1.6
+    }
+
+    .no-js & {
+      display: block;
+    }
+  }
+}
+
+#overlay {
+
+  &::after {
+    /* overlay layer visible on small devices when the right panel slides in */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($primary-color, .8);
+    visibility: hidden;
+    opacity: 0;
+    -webkit-transition: opacity .3s 0s, visibility 0s .3s;
+    -moz-transition: opacity .3s 0s, visibility 0s .3s;
+    transition: opacity .3s 0s, visibility 0s .3s;
+  }
+
+  &.sb-overlay::after {
+    visibility: visible;
+    opacity: 1;
+    -webkit-transition: opacity .3s 0s, visibility 0s 0s;
+    -moz-transition: opacity .3s 0s, visibility 0s 0s;
+    transition: opacity .3s 0s, visibility 0s 0s;
+  }
+
+  &.noscroll{
+    overflow: hidden;
+  }
+
+  @include mq(medium) {
+    &::after {
+      display: none;
+    }
+  }
+}

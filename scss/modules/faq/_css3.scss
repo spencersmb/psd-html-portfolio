@@ -1,0 +1,175 @@
+//TODO - Add vender prefixes
+
+.short-main{
+  background: $primary-color;
+  color: #ffffff;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#2f2f2f), to(#4f4f4f));
+  background-image: -webkit-linear-gradient(top, #2f2f2f, #4f4f4f);
+  background-image:    -moz-linear-gradient(top, #2f2f2f, #4f4f4f);
+  background-image:     -ms-linear-gradient(top, #2f2f2f, #4f4f4f);
+  background-image:      -o-linear-gradient(top, #2f2f2f, #4f4f4f);
+  background-image:      linear-gradient(top, #2f2f2f, #4f4f4f);
+  width:100%;
+  margin:  0 auto 50px auto;
+
+
+}
+
+.center{
+  width:1200px;
+  margin: 0 auto;
+  position:relative;
+}
+
+.short-nav{
+
+  border-bottom: 2px solid #111;
+  height: 40px;
+  list-style-type: none;
+  padding-left: 0;
+  @include clearfix;
+  text-align: center;
+  width:auto;
+
+
+  //give entire li a width and height so it is clickable
+
+  li{
+//    display:block;
+//    float:left;
+    display: inline-block; //puts everything on the same line
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#2f2f2f), to(#4f4f4f));
+    background-image: -webkit-linear-gradient(top, #2f2f2f, #4f4f4f);
+    background-image:    -moz-linear-gradient(top, #2f2f2f, #4f4f4f);
+    background-image:     -ms-linear-gradient(top, #2f2f2f, #4f4f4f);
+    background-image:      -o-linear-gradient(top, #2f2f2f, #4f4f4f);
+    background-image:      linear-gradient(top, #2f2f2f, #4f4f4f);
+    border-bottom: 2px solid #111;
+    border-right: 1px solid #555;
+    font-size: 14px;
+    //height: 40px;
+    //padding-top: 10px;
+    width:150px;
+    margin: 0 auto; //centers li
+    position:relative;
+
+    //select the propery you want to transform
+    //Begining point is the current height - 40px
+
+
+    &:first-of-type{
+//      border-left: 1px solid #555;
+    }
+
+    &:hover{
+
+    }
+
+    a{
+      display:block;
+      color: #aaa;
+      padding-top: 10px;
+      top: 0;
+      left: 0;
+      width: 150px;
+      height: 38px;
+      text-decoration: none;
+      position: relative;
+
+      //if you want to assign multiple transition properties to one element
+      transition: height  0.3s, color .3s, top .3s;
+
+      &:hover{
+        height:60px;
+        color:#ffffff;
+        top:10px;
+      }
+    }
+  }
+}
+
+//////////Buttons
+
+.css3-btns{
+  padding-bottom: 60px;
+}
+
+.button{
+  height:68px;
+  width:230px;
+  background-color: $secondary-color;
+  display:block;
+  //padding:5px;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+
+  //fade color
+  @include transition-property(background-color);
+  @include transition-duration(.2s);
+
+  border: 1px solid $secondary-color;
+  @include round(6px);
+  color:$white;
+
+  &:hover{
+    color:$white;
+    background-color:lighten($secondary-color, 10%);
+    border: 1px solid lighten($secondary-color, 10%);
+
+    span{
+
+      &.big-text{
+        @include transform(translateY(-15px));
+      }
+
+      &.small-text{
+        @include transform(translateX(-170px));
+      }
+
+    }
+
+
+  }
+
+  a{
+    display:block;
+    position:relative;
+    color:#ffffff;
+  }
+  
+  img{
+    position: absolute;
+//    top: 6px;
+    left: 8px;
+  }
+
+  span{
+
+    &.big-text{
+      font-size:20px;
+      font-weight:bold;
+      text-decoration: none;
+      position: absolute;
+      top: 25px;
+      right: 20px;
+      @include transition-property(transform);
+      @include transition-duration(.3s);
+      @include transition-timing-function(ease);
+    }
+
+    &.small-text{
+      text-decoration: none;
+      position: absolute;
+      font-size: 14px;
+      top: 40px;
+      right: -150px;
+      @include transition-property(transform);
+      @include transition-duration(.3s);
+      @include transition-timing-function( .9s ease);
+
+    }
+
+
+  }
+}

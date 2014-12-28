@@ -72,6 +72,35 @@ body {
 //  font-size: $base__font-size;
 //  line-height: ($base__line/$base__font-size);
   -webkit-font-smoothing: antialiased;
+
+  &::after {
+    /* overlay layer visible on small devices when the right panel slides in */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($primary-color, .8);
+    visibility: hidden;
+    opacity: 0;
+    -webkit-transition: opacity .3s 0s, visibility 0s .3s;
+    -moz-transition: opacity .3s 0s, visibility 0s .3s;
+    transition: opacity .3s 0s, visibility 0s .3s;
+  }
+
+  &.sb-overlay::after {
+    visibility: visible;
+    opacity: 1;
+    -webkit-transition: opacity .3s 0s, visibility 0s 0s;
+    -moz-transition: opacity .3s 0s, visibility 0s 0s;
+    transition: opacity .3s 0s, visibility 0s 0s;
+  }
+
+  @include mq(medium) {
+    &::after {
+      display: none;
+    }
+  }
 }
 html,
 body {

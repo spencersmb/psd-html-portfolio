@@ -82,22 +82,25 @@ Main components
   /* set a min-height and a z-index to be sure that the main element completely covers the lateral menu */
   min-height: 100%;
   position: relative;
-  background-color: #ffffff;
-  z-index: $content-zindex; //2
+  background-color: #edeeef;
+ // z-index: $content-zindex; //2
+  z-index: 2;
 
   //we assign a top padding since the header is in position absolute or fixed
   padding-top: $header-S;
 
   /* Force Hardware Acceleration in WebKit */
-  -webkit-transform: translateZ(0);
+  //-webkit-transform: translateZ(0);
   -webkit-backface-visibility: hidden;
 
   //add transform to speed up and smooth out transition
+  //create the type of transition and its duration - start
   @include transition-property(transform);
   @include transition-duration(.4s);
 
   &.lateral-menu-is-open {
     /* translate to show the lateral menu - all content needs to be put in the .cd-main-content to translate*/
+    // end animation style
     @include transform(translateX(-260px));
   }
 
@@ -107,7 +110,7 @@ Main components
 }
 
 
-header {
+#header {
   position: absolute;
   top: 0;
   left: 0;
@@ -175,8 +178,8 @@ header {
   }
 
   a {
-//    display: inline-block;
-    padding: .5em;
+    display: inline-block;
+    padding: 0 .5em;
     color: #FFF;
     text-transform: uppercase;
     font-weight: 600;
@@ -295,7 +298,7 @@ header {
   visibility: hidden;
 
   /* the secondary navigation is covered by the main element */
-  z-index: $secondary-nav; // see partials > _variables.scss
+  z-index:0; // see partials > _variables.scss
 
   width: 260px;
   background-color: $secondary-color;
@@ -317,6 +320,35 @@ header {
 
   .sb-navigation {
     margin: 10px 0 16px;
+
+    .social-rotate{
+      padding-left: 30px;
+      @include clearfix;
+
+      li{
+        float:left;
+        margin-right:10px;
+      }
+
+      a{
+        display:inline-block;
+        height:32px;
+        width:32px;
+        padding:0;
+
+      }
+
+      img{
+
+        transition:all 0.3s ease;
+
+        &:hover {
+
+          transform:scale(1.25) rotate(360deg);
+
+        }
+      }
+    }
   }
 
   .sub-menu {

@@ -1,0 +1,105 @@
+@include font-face(codropsicons, '../fonts/codropsicons/codropsicons', normal);
+
+
+.intro{
+  position:fixed;
+  z-index: 10;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background: #2a2e39;
+
+  //snapping animation
+  transition: transform 0.6s;
+  transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
+
+  &__image{
+    //makes image start at 0,0
+    position: absolute;
+    min-width: 100%;
+    min-height: 120%;
+    width: auto;
+    height: auto;
+
+    //animation synced to the intro header container
+    transition: transform 0.6s, opacity 0.6s;
+    transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
+
+
+    .container--open{
+      opacity: 0;
+      transform: translate3d(0, 20%, 0);
+    }
+  }
+}
+
+
+//We use two translate3d transforms: the first one will move it up completely (100% of its own height)
+//and the second one will move it down 250px which is the final height we want for our header.
+//(We could as well use just one transformation on the Y-axis and say calc(-100% + 250px)
+//but transitioning to that won’t work in IE.)
+.container--open .intro {
+  transform: translate3d(0, -100%, 0) translate3d(0, 250px, 0);
+}
+
+
+.intro__content {
+  position: absolute;
+  bottom: 0;
+  padding: 1.8em;
+  width: 100%;
+  font-size: 1.15em;
+}
+
+
+.codrops-links {
+  position: relative;
+  -webkit-flex: none;
+  flex: none;
+  white-space: nowrap;
+
+
+  //creates the diagonal line
+  &::after{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -1px;
+    width: 2px;
+    height: 100%;
+    background: #dbdbdb;
+    content: '';
+    -webkit-transform: rotate3d(0,0,1,22.5deg);
+    transform: rotate3d(0,0,1,22.5deg);
+  }
+}
+
+.codrops-icon {
+  display: inline-block;
+  margin: 0.5em;
+  padding: 0em 0;
+  width: 1.5em;
+  text-decoration: none;
+
+  //hide text
+  span{
+    display: none;
+
+  }
+
+  &::before{
+    margin: 0 5px;
+    text-transform: none;
+    font-weight: normal;
+    font-style: normal;
+    font-variant: normal;
+    font-family: 'codropsicons';
+    line-height: 1;
+    speak: none;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+.codrops-icon--drop:before {
+  content: "\e001";
+}
