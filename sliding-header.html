@@ -44,72 +44,87 @@
 
     <!--</header>-->
 
+    <div id="container" class="container">
+        <header class="intro">
 
-    <header class="intro">
+            <img class="intro__image" src="images/header/header-ice.jpg" alt="Iceland glacier"/>
 
-        <img class="intro__image" src="images/header/header-ice.jpg" alt="Iceland glacier"/>
+            <div class="intro__content">
 
-        <div class="intro__content">
+                <h1 class="intro__title">Essential Feelings</h1>
 
-            <h1 class="intro__title">Essential Feelings</h1>
+                <div class="intro__subtitle">
 
-            <div class="intro__subtitle">
+                    <div class="codrops-links">
+                        <a class="codrops-icon codrops-icon--prev" href="http://tympanus.net/Development/ElasticSVGElements/" title="Previous Demo"><span>Previous Demo</span></a>
+                        <a class="codrops-icon codrops-icon--drop" href="http://tympanus.net/codrops/?p=21934" title="Back to the article"><span>Back to the Codrops article</span></a>
+                    </div>
 
-                <div class="codrops-links">
-                    <a class="codrops-icon codrops-icon--prev" href="http://tympanus.net/Development/ElasticSVGElements/" title="Previous Demo"><span>Previous Demo</span></a>
-                    <a class="codrops-icon codrops-icon--drop" href="http://tympanus.net/codrops/?p=21934" title="Back to the article"><span>Back to the Codrops article</span></a>
-                </div>
+                    <div class="intro__description">
+                        A layout with a sliding header and an image grid. Photo courtesy of <a href="http://instagram.com/danrubin/"> Dan Rubin </a>.</div>
 
-                <div class="intro__description">
+                    <button class="trigger">
 
-                </div>
+                        <svg width="100%" height="100%" viewBox="0 0 60 60" preserveAspectRatio="none">
+                            <g class="icon icon--grid">
+                                <rect x="32.5" y="5.5" width="22" height="22"/>
+                                <rect x="4.5" y="5.5" width="22" height="22"/>
+                                <rect x="32.5" y="33.5" width="22" height="22"/>
+                                <rect x="4.5" y="33.5" width="22" height="22"/>
+                            </g>
+                            <g class="icon icon--cross">
+                                <line x1="4.5" y1="55.5" x2="54.953" y2="5.046"/>
+                                <line x1="54.953" y1="55.5" x2="4.5" y2="5.047"/>
+                            </g>
+                        </svg>
 
-                <button class="trigger">
+                        <span>View content</span>
 
-                    <svg width="100%" height="100%" viewBox="0 0 60 60" preserveAspectRatio="none">
-                        <g class="icon icon--grid">
-                            <rect x="32.5" y="5.5" width="22" height="22"/>
-                            <rect x="4.5" y="5.5" width="22" height="22"/>
-                            <rect x="32.5" y="33.5" width="22" height="22"/>
-                            <rect x="4.5" y="33.5" width="22" height="22"/>
-                        </g>
-                        <g class="icon icon--cross">
-                            <line x1="4.5" y1="55.5" x2="54.953" y2="5.046"/>
-                            <line x1="54.953" y1="55.5" x2="4.5" y2="5.047"/>
-                        </g>
-                    </svg>
+                    </button>
 
-                    <span>View content</span>
+                </div><!-- /intro__subtitle -->
 
-                </button>
+            </div><!-- /intro__content -->
 
-            </div><!-- /intro__subtitle -->
-
-        </div><!-- /intro__content -->
-
-    </header><!-- /intro -->
-
+        </header><!-- /intro -->
 
 
 
-    <section class="items-wrap">
 
-        <a href="#" class="item">
-            <img class="item__image" src="images/header/item01.jpg" alt="item01"/>
-            <h2 class="item__title">Magnificence</h2>
-        </a>
+        <section class="items-wrap">
 
-        <a href="#" class="item">
-            <img class="item__image" src="images/header/item02.jpg" alt="item02"/>
-            <h2 class="item__title">Electrifying</h2>
-        </a>
+            <a href="#" class="item">
+                <img class="item__image" src="images/header/item01.jpg" alt="item01"/>
+                <h2 class="item__title">Magnificence</h2>
+            </a>
 
-        <a href="#" class="item">
-            <img class="item__image" src="images/header/item03.jpg" alt="item02"/>
-            <h2 class="item__title">Electrifying</h2>
-        </a>
+            <a href="#" class="item">
+                <img class="item__image" src="images/header/item02.jpg" alt="item02"/>
+                <h2 class="item__title">Electrifying</h2>
+            </a>
 
-    </section><!-- /items-wrap -->
+            <a href="#" class="item">
+                <img class="item__image" src="images/header/item03.jpg" alt="item02"/>
+                <h2 class="item__title">Electrifying</h2>
+            </a>
+
+            <a href="#" class="item">
+                <img class="item__image" src="images/header/item01.jpg" alt="item01"/>
+                <h2 class="item__title">Magnificence</h2>
+            </a>
+
+            <a href="#" class="item">
+                <img class="item__image" src="images/header/item02.jpg" alt="item02"/>
+                <h2 class="item__title">Electrifying</h2>
+            </a>
+
+            <a href="#" class="item">
+                <img class="item__image" src="images/header/item03.jpg" alt="item02"/>
+                <h2 class="item__title">Electrifying</h2>
+            </a>
+
+        </section><!-- /items-wrap -->
+    </div>
 
 
 <!-- JavaScript -->
@@ -118,6 +133,7 @@
     <script src="js/modernizr.js"></script>
     <script src="lib/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
+    <script src="js/classie.js"></script>
 
 </body>
 </html>
