@@ -7523,3 +7523,93 @@ footer .row {
     font-size: 2em;
   }
 }
+.panel-header {
+  text-align: center;
+  padding-bottom: 80px;
+}
+.panel-header h1 {
+  padding: 80px 0;
+  font-size: 2.5em;
+  color: #797e83;
+}
+
+.sb-btn {
+  position: relative;
+  display: inline-block;
+  padding: 1.3125em 2.625em;
+  background-color: #e46965;
+  color: #ffffff;
+  font-weight: bold;
+  border-radius: 50em;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  transition: all 0.2s;
+}
+.no-touch .sb-btn:hover {
+  color: #ffffff;
+  text-decoration: none;
+  background-color: #efa8a6;
+}
+.sb-btn:visited {
+  color: #ffffff;
+  text-decoration: none;
+}
+.sb-btn:focus {
+  text-decoration: none;
+}
+
+.sb-panel {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.sb-panel-header {
+  height: 50px;
+  background-color: #ffffff;
+  line-height: 50px;
+  width: 50%;
+}
+.sb-panel-header h1 {
+  font-weight: bold;
+  padding-left: 5%;
+  color: grey;
+}
+
+.sb-panel-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60px;
+  display: inline-block;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.sb-panel-close::before, .sb-panel-close::after {
+  background-color: #424f5c;
+  position: absolute;
+  top: 22px;
+  left: 20px;
+  height: 3px;
+  width: 20px;
+  /* this fixes a bug where pseudo elements are slighty off position */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.sb-panel-close::before::before, .sb-panel-close::after::before {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.sb-panel-close::before::after, .sb-panel-close::after::after {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}

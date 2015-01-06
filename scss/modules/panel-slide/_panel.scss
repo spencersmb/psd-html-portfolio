@@ -1,0 +1,101 @@
+.panel-header{
+
+  text-align: center;
+  padding-bottom: 80px;
+
+  h1{
+    padding: 80px 0;
+    font-size: em(40px);
+    color:$primary-color;
+
+  }
+
+}
+
+.sb-btn{
+  position:relative;
+  display:inline-block;
+  padding: em(21px) em(42px);
+  background-color:$secondary-color;
+  color:#ffffff;
+  font-weight: bold;
+  //rounds out the button
+  border-radius: 50em;
+  @include transition(all .2s);
+
+  .no-touch &:hover{
+    color:#ffffff;
+    text-decoration: none;
+    background-color: lighten($secondary-color, 15%);
+  }
+
+  &:visited{
+    color:#ffffff;
+    text-decoration: none;
+  }
+  &:focus{
+    text-decoration: none;
+  }
+}
+
+
+.sb-panel{
+//  position:fixed;
+  position:relative;
+  top:0;
+  left:0;
+  height:100%;
+  width:100%;
+
+}
+
+// panel size
+
+$panel-width-S: 90%;
+$panel-width-M: 70%;
+$panel-width-L: 50%;
+
+.sb-panel-header{
+  height:50px;
+  background-color: #ffffff;
+  line-height: 50px;
+  width: $panel-width-L;
+
+  h1{
+    font-weight: bold;
+    padding-left: 5%;
+    color:grey;
+  }
+}
+
+.sb-panel-close{
+  position: absolute;
+  top:0;
+  right:0;
+  width: 60px;
+
+  display: inline-block;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+
+  &::before, &::after{
+    background-color: #424f5c;
+    position: absolute;
+    top: 22px;
+    left: 20px;
+    height: 3px;
+    width: 20px;
+    /* this fixes a bug where pseudo elements are slighty off position */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+
+
+    &::before {
+      @include transform(rotate(45deg));
+    }
+    &::after {
+      @include transform(rotate(-45deg));
+    }
+  }
+}
