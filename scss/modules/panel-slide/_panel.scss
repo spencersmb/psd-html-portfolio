@@ -12,7 +12,7 @@
 
 }
 
-.sb-btn{
+.sb-btn-panel{
   position:relative;
   display:inline-block;
   padding: em(21px) em(42px);
@@ -22,6 +22,7 @@
   //rounds out the button
   border-radius: 50em;
   @include transition(all .2s);
+  z-index: 6;
 
   .no-touch &:hover{
     color:#ffffff;
@@ -40,13 +41,43 @@
 
 
 .sb-panel{
-//  position:fixed;
-  position:relative;
+  //used fixed positioning here but could use absolute as well...
+  //sb-panel is just the container for all the content so could potentially use right:0 too.
+  position:absolute;
   top:0;
   left:0;
   height:100%;
   width:100%;
+  z-index: 5;
+  visibility: hidden;
+  //on close do this transition - open happens on the .is-visible state
+  @include transition(visibility 0s .6s);
 
+  //adds nice fade effect in the background
+  &::after {
+    /* overlay layer */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(#000, 0);
+    cursor: pointer;
+    @include transition(background .3s .3s);
+  }
+
+  &.is-visible {
+    visibility: visible;
+    //first number is for time it takes to complete animation, second number is for delay.
+    @include transition(visibility 0s 0s);
+
+    //fade effect on
+    &::after {
+      background: rgba(#000, .6);
+      @include transition(background .3s 0s);
+    }
+
+  }
 }
 
 // panel size
@@ -56,29 +87,55 @@ $panel-width-M: 70%;
 $panel-width-L: 50%;
 
 .sb-panel-header{
+  position: absolute;
   height:50px;
   background-color: #ffffff;
   line-height: 50px;
+  //width will be changed to small for mobile first coding
   width: $panel-width-L;
+  @include transition(top .3s 0s);
+  z-index: 4;
 
   h1{
     font-weight: bold;
     padding-left: 5%;
     color:grey;
+    margin:0;
+  }
+
+  //determins what side the panel is on for flexibility
+  //the height of the h1 is 50 px so start by hiding it off the canvas and move it on click.
+  .from-right &, .from-left & {
+    top: -50px;
+  }
+
+  .from-right & {
+    right: 0;
+  }
+  .is-visible & {
+    top: 0;
+    @include transition(top .3s .3s);
+
   }
 }
 
 .sb-panel-close{
+
   position: absolute;
   top:0;
   right:0;
   width: 60px;
+  z-index: 5;
 
-  display: inline-block;
+  //could be block or inline block - but more than one would probly use inline-block
+  display: block;
+  //push the text off the screen with text-indent
   text-indent: 100%;
+  //not sure why we use these last 2 items
   white-space: nowrap;
   overflow: hidden;
 
+  //makes a solid dash X2 - one for before and one for after
   &::before, &::after{
     background-color: #424f5c;
     position: absolute;
@@ -90,12 +147,76 @@ $panel-width-L: 50%;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
 
+  }
+  &::before {
+    @include transform(rotate(45deg));
+  }
+  &::after {
+    @include transform(rotate(-45deg));
+  }
+
+
+  //change background to blue + change X to white and rotate
+  .no-touch &:hover{
+    background-color: #424f5c;
+
+
+    &::before, &::after {
+      background-color: #ffffff;
+      @include transition-property(transform);
+      @include transition-duration(.3s);
+    }
 
     &::before {
-      @include transform(rotate(45deg));
+
+      @include transform(rotate(220deg));
     }
     &::after {
-      @include transform(rotate(-45deg));
+
+      @include transform(rotate(135deg));
     }
   }
 }
+
+.sb-panel-container{
+
+  position:absolute;
+  width:$panel-width-L;
+  height: 100%;
+  top:0;
+  z-index: 3;
+  background:#dbe2e9;
+
+  @include transition-property(transform);
+  @include transition-duration(.3s);
+  @include transition-delay(.3s);
+
+  .from-right & {
+    right: 0;
+    //makes the slide in animation - using x axis
+    //start at right 0 and slide in to right: 0, 100% using x axis.
+    @include transform(translate3d(100%, 0, 0));
+  }
+
+  .is-visible & {
+    //the open position changes .from right from 100% to 50%
+    @include transform(translate3d(0, 0, 0));
+    @include transition-delay(0s);
+  }
+
+}
+
+.sb-panel-content{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 70px 5%;
+  overflow: auto;
+
+  /* smooth scrolling on touch devices */
+  -webkit-overflow-scrolling: touch;
+}
+
+

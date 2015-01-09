@@ -347,37 +347,55 @@ var $lateral_menu_trigger = $('#sb-menu-trigger'),
 //////////////////////////////////////
 
 
-    var container = document.getElementById( 'container' ),
-        trigger = container.querySelector( 'button.trigger' );
+    //var container = document.getElementById( 'container' ),
+    //    trigger = container.querySelector( 'button.trigger' );
+    //
+    //function toggleContent(){
+    //
+    //    if(classie.has(container, 'container--open')){
+    //
+    //        classie.remove( container, 'container--open' );
+    //        classie.remove( trigger, 'trigger--active' );
+    //        window.addEventListener( 'scroll', noscroll );
+    //
+    //    }else{
+    //
+    //        classie.add( container, 'container--open' );
+    //        classie.add( trigger, 'trigger--active' );
+    //        window.removeEventListener( 'scroll', noscroll );
+    //    }
+    //
+    //}
+    //
+    //
+    //
+    //function noscroll() {
+    //    window.scrollTo( 0, 0 );
+    //}
+    //
+    //document.body.scrollTop = document.documentElement.scrollTop = 0;
+    //
+    //// disable scrolling
+    //window.addEventListener( 'scroll', noscroll );
+    //
+    //trigger.addEventListener( 'click', toggleContent );
 
-    function toggleContent(){
 
-        if(classie.has(container, 'container--open')){
+//////////////////////////////////////
+//slide-in panel
+//////////////////////////////////////
 
-            classie.remove( container, 'container--open' );
-            classie.remove( trigger, 'trigger--active' );
-            window.addEventListener( 'scroll', noscroll );
+    $('.sb-btn-panel').on('click', function(event){
+        event.preventDefault();
+        //alert('click');
+        $('.sb-panel').addClass('is-visible');
+    });
 
-        }else{
-
-            classie.add( container, 'container--open' );
-            classie.add( trigger, 'trigger--active' );
-            window.removeEventListener( 'scroll', noscroll );
+    $('.sb-panel').on('click', function(event){
+        if($(event.target).is('.sb-panel') || $(event.target).is('.sb-panel-close')){
+            $('.sb-panel').removeClass('is-visible');
+            event.preventDefault();
         }
-
-    }
-
-
-
-    function noscroll() {
-        window.scrollTo( 0, 0 );
-    }
-
-    document.body.scrollTop = document.documentElement.scrollTop = 0;
-
-    // disable scrolling
-    window.addEventListener( 'scroll', noscroll );
-
-    trigger.addEventListener( 'click', toggleContent );
+    });
 
 });
